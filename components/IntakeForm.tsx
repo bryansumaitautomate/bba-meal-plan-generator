@@ -2,12 +2,15 @@
 
 import { useForm, Controller } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { z } from 'zod'
 import { Intake, type IntakeInput } from '@/lib/schema'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Slider } from '@/components/ui/slider'
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'
+
+type IntakeFormValues = z.input<typeof Intake>
 
 interface IntakeFormProps {
   onSubmit: (intake: IntakeInput) => void
@@ -24,7 +27,7 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
     control,
     formState: { errors },
     watch,
-  } = useForm<IntakeInput>({
+  } = useForm<IntakeFormValues, undefined, IntakeInput>({
     resolver: zodResolver(Intake),
     defaultValues: {
       goal: 'cut',
@@ -49,14 +52,13 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
           control={control}
           render={({ field }) => (
             <ToggleGroup
-              type="single"
-              value={field.value}
-              onValueChange={(v) => v && field.onChange(v)}
+              value={[field.value]}
+              onValueChange={(v) => v[0] && field.onChange(v[0])}
               className="justify-start gap-2"
             >
-              <ToggleGroupItem value="cut" className="data-[state=on]:bg-gold data-[state=on]:text-bg border border-bba-border">Cut</ToggleGroupItem>
-              <ToggleGroupItem value="maintain" className="data-[state=on]:bg-gold data-[state=on]:text-bg border border-bba-border">Maintain</ToggleGroupItem>
-              <ToggleGroupItem value="bulk" className="data-[state=on]:bg-gold data-[state=on]:text-bg border border-bba-border">Bulk</ToggleGroupItem>
+              <ToggleGroupItem value="cut" className="data-[pressed]:bg-gold data-[pressed]:text-bg border border-bba-border">Cut</ToggleGroupItem>
+              <ToggleGroupItem value="maintain" className="data-[pressed]:bg-gold data-[pressed]:text-bg border border-bba-border">Maintain</ToggleGroupItem>
+              <ToggleGroupItem value="bulk" className="data-[pressed]:bg-gold data-[pressed]:text-bg border border-bba-border">Bulk</ToggleGroupItem>
             </ToggleGroup>
           )}
         />
@@ -98,7 +100,10 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
               max={7}
               step={1}
               value={[field.value]}
-              onValueChange={(v) => field.onChange(v[0])}
+              onValueChange={(v) => {
+                const next = Array.isArray(v) ? v[0] : v
+                field.onChange(next)
+              }}
             />
           )}
         />
@@ -111,16 +116,15 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
           control={control}
           render={({ field }) => (
             <ToggleGroup
-              type="single"
-              value={field.value}
-              onValueChange={(v) => v && field.onChange(v)}
+              value={[field.value]}
+              onValueChange={(v) => v[0] && field.onChange(v[0])}
               className="flex-wrap justify-start gap-2"
             >
               {dietOptions.map((s) => (
                 <ToggleGroupItem
                   key={s}
                   value={s}
-                  className="data-[state=on]:bg-gold data-[state=on]:text-bg border border-bba-border capitalize"
+                  className="data-[pressed]:bg-gold data-[pressed]:text-bg border border-bba-border capitalize"
                 >
                   {s}
                 </ToggleGroupItem>
@@ -137,8 +141,8 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
           control={control}
           render={({ field }) => (
             <ToggleGroup
-              type="multiple"
-              value={field.value}
+              multiple
+              value={field.value ?? []}
               onValueChange={(v) => field.onChange(v)}
               className="flex-wrap justify-start gap-2"
             >
@@ -146,7 +150,7 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
                 <ToggleGroupItem
                   key={c}
                   value={c}
-                  className="data-[state=on]:bg-gold data-[state=on]:text-bg border border-bba-border"
+                  className="data-[pressed]:bg-gold data-[pressed]:text-bg border border-bba-border"
                 >
                   {c}
                 </ToggleGroupItem>

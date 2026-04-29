@@ -18,6 +18,7 @@ export function Hero({ onCta }: HeroProps) {
         Your week. Real food. No BS plans here.
       </p>
       <button
+        type="button"
         onClick={onCta}
         className="bg-gold hover:bg-gold-hover text-bg font-display font-bold uppercase tracking-wide px-10 py-5 text-lg rounded-md transition-colors"
       >
