@@ -189,6 +189,14 @@
   font-size: clamp(8rem, 18vw, 14rem);
 }
 
+@utility glyph-marquee {
+  font-size: clamp(4rem, 10vw, 9rem);
+}
+
+@utility glyph-day-flip {
+  font-size: clamp(5rem, 18vw, 14rem);
+}
+
 /* ────────────────────────────────────────────────────────────
    Custom slider thumb (gold)
    ──────────────────────────────────────────────────────────── */
