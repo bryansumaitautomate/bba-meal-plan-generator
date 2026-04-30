@@ -20,8 +20,9 @@ const dietOptions = ['omnivore', 'vegetarian', 'vegan', 'keto', 'paleo'] as cons
 const goalOptions = [
   { value: 'cut', label: 'Cut', sub: 'Strip fat' },
   { value: 'maintain', label: 'Maintain', sub: 'Hold the line' },
-  { value: 'bulk', label: 'Bulk', sub: 'Build size' },
+  { value: 'gain', label: 'Gain', sub: 'Build size' },
 ] as const
+const mealCountOptions = [3, 4, 5] as const
 
 export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
   const {
@@ -36,6 +37,8 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
       goal: 'cut',
       calories: 2000,
       protein: 180,
+      mealsPerDay: 4,
+      fastBreakfast: false,
       allergies: '',
       trainingDays: 4,
       dietStyle: 'omnivore',
@@ -152,8 +155,70 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
           </div>
         </Block>
 
+        {/* MEALS + FASTING */}
+        <Block number="04" label="Meals & Timing">
+          <div className="space-y-8">
+            <div>
+              <p className="text-kicker mb-3">How many meals per day?</p>
+              <Controller
+                name="mealsPerDay"
+                control={control}
+                render={({ field }) => (
+                  <ToggleGroup
+                    value={[String(field.value ?? 4)]}
+                    onValueChange={(v) => v[0] && field.onChange(Number(v[0]))}
+                    className="grid grid-cols-3 gap-2 md:gap-3"
+                  >
+                    {mealCountOptions.map((n) => (
+                      <ToggleGroupItem
+                        key={n}
+                        value={String(n)}
+                        className="flex flex-col items-center gap-1 py-4 md:py-5 border border-bba-border bg-surface text-text transition-all hover:border-bba-border-strong data-[pressed]:bg-bg data-[pressed]:border-gold data-[pressed]:shadow-[0_0_0_1px_var(--color-gold)]"
+                      >
+                        <span className="font-display text-3xl md:text-4xl font-bold">{n}</span>
+                        <span className="text-kicker">{n === 3 ? 'three squares' : n === 4 ? 'three plus snack' : 'plus two snacks'}</span>
+                      </ToggleGroupItem>
+                    ))}
+                  </ToggleGroup>
+                )}
+              />
+            </div>
+
+            <div className="border-t border-bba-border pt-6">
+              <Controller
+                name="fastBreakfast"
+                control={control}
+                render={({ field }) => (
+                  <button
+                    type="button"
+                    onClick={() => field.onChange(!field.value)}
+                    aria-pressed={field.value ?? false}
+                    className="flex items-center justify-between gap-4 w-full text-left p-5 md:p-6 border border-bba-border bg-surface hover:border-bba-border-strong transition-colors group"
+                  >
+                    <div>
+                      <p className="font-display text-xl md:text-2xl text-text mb-1">
+                        Fast through breakfast?
+                      </p>
+                      <p className="text-kicker">
+                        Skip breakfast, eat later. Intermittent fasting style.
+                      </p>
+                    </div>
+                    <div
+                      className={`relative inline-flex w-14 h-8 rounded-full border transition-colors flex-shrink-0 ${field.value ? 'bg-gold border-gold' : 'bg-elevated border-bba-border-strong'}`}
+                    >
+                      <span
+                        className={`absolute top-0.5 w-7 h-7 rounded-full transition-transform ${field.value ? 'translate-x-6 bg-bg' : 'translate-x-0.5 bg-text'}`}
+                      />
+                    </div>
+                  </button>
+                )}
+              />
+            </div>
+          </div>
+        </Block>
+
         {/* DIET STYLE */}
-        <Block number="04" label="Diet Style">
+        <Block number="05" label="Diet Style">
           <Controller
             name="dietStyle"
             control={control}
@@ -178,7 +243,7 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
         </Block>
 
         {/* CUISINES */}
-        <Block number="05" label="Cuisine Preference">
+        <Block number="06" label="Cuisine Preference">
           <Controller
             name="cuisines"
             control={control}
@@ -205,7 +270,7 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
         </Block>
 
         {/* ALLERGIES + DISLIKES */}
-        <Block number="06" label="Off the Table">
+        <Block number="07" label="Off the Table">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
             <TextField
               id="allergies"

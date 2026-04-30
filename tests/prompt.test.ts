@@ -6,6 +6,8 @@ const sampleIntake: IntakeInput = {
   goal: 'cut',
   calories: 2000,
   protein: 180,
+  mealsPerDay: 4,
+  fastBreakfast: false,
   allergies: 'peanuts',
   trainingDays: 4,
   dietStyle: 'omnivore',
@@ -60,5 +62,31 @@ describe('buildUserPrompt', () => {
   it('handles empty cuisines as no preference', () => {
     const prompt = buildUserPrompt({ ...sampleIntake, cuisines: [] })
     expect(prompt).toMatch(/cuisines:\s*no preference/i)
+  })
+
+  it('includes meals per day', () => {
+    const prompt = buildUserPrompt({ ...sampleIntake, mealsPerDay: 5 })
+    expect(prompt).toMatch(/meals per day:\s*5/i)
+  })
+
+  it('reflects fastBreakfast=true with skip-breakfast wording', () => {
+    const prompt = buildUserPrompt({ ...sampleIntake, fastBreakfast: true })
+    expect(prompt.toLowerCase()).toContain('skip breakfast')
+  })
+})
+
+describe('buildSystemPrompt — shopping list', () => {
+  it('mentions categorized shopping list output', () => {
+    const prompt = buildSystemPrompt()
+    expect(prompt.toLowerCase()).toContain('shoppinglist')
+    expect(prompt).toContain('Produce')
+    expect(prompt).toContain('Proteins')
+    expect(prompt).toContain('Pantry')
+  })
+
+  it('mentions meal slot variability and Snack 2', () => {
+    const prompt = buildSystemPrompt()
+    expect(prompt).toContain('Snack 2')
+    expect(prompt.toLowerCase()).toContain('meal count per day is variable')
   })
 })

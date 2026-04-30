@@ -34,6 +34,10 @@ const sampleDay = (name: string) => ({
 const validPlan = {
   coachNote: "Right. One week. No BS. Let's go.",
   days: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(sampleDay),
+  shoppingList: [
+    { category: 'Produce', items: ['spinach', 'tomatoes'] },
+    { category: 'Proteins', items: ['chicken', 'salmon'] },
+  ],
 }
 
 function makeRequest(body: unknown): Request {

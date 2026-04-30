@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'motion/react'
+import Link from 'next/link'
 
 interface HeroProps {
   onCta: () => void
@@ -21,7 +22,16 @@ export function Hero({ onCta }: HeroProps) {
           </span>
           <span className="text-kicker hidden sm:inline">Better Body Academy</span>
         </div>
-        <span className="text-kicker">Issue 01 / 2026</span>
+        <div className="flex items-center gap-4 md:gap-6">
+          <Link
+            href="/member"
+            className="text-kicker hover:text-gold transition-colors group inline-flex items-center gap-2"
+          >
+            <span>Member</span>
+            <span aria-hidden="true" className="text-gold transition-transform group-hover:translate-x-0.5">→</span>
+          </Link>
+          <span className="text-kicker hidden sm:inline text-faint">Issue 01 / 2026</span>
+        </div>
       </header>
 
       {/* Big editorial moment */}
