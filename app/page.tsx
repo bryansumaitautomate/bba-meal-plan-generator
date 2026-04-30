@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useRef } from 'react'
+import { AnimatePresence, motion } from 'motion/react'
 import { Hero } from '@/components/Hero'
 import { IntakeForm } from '@/components/IntakeForm'
 import { LoadingOverlay } from '@/components/LoadingOverlay'
@@ -18,7 +19,7 @@ export default function HomePage() {
 
   function handleCta(): void {
     setStage('form')
-    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth' }), 50)
+    setTimeout(() => formRef.current?.scrollIntoView({ behavior: 'smooth' }), 80)
   }
 
   async function handleSubmit(intake: IntakeInput): Promise<void> {
@@ -37,7 +38,7 @@ export default function HomePage() {
       const data: PlanType = await res.json()
       setPlan(data)
       setStage('result')
-      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 50)
+      setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 80)
     } catch (err) {
       const message = err instanceof Error ? err.message : "Couldn't cook this one up. Try again."
       setErrorMsg(message)
@@ -56,34 +57,64 @@ export default function HomePage() {
     <main className="min-h-screen bg-bg text-text">
       <Hero onCta={handleCta} />
 
-      {showForm && (
-        <div ref={formRef}>
-          <IntakeForm onSubmit={handleSubmit} disabled={stage === 'loading'} />
-        </div>
-      )}
+      <AnimatePresence>
+        {showForm && (
+          <motion.div
+            key="form-wrap"
+            ref={formRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 40 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <IntakeForm onSubmit={handleSubmit} disabled={stage === 'loading'} />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {stage === 'error' && (
-        <div className="max-w-2xl mx-auto p-6">
-          <div className="bg-alert/10 border border-alert rounded-lg p-4 text-center">
-            <p className="text-alert font-display">{errorMsg}</p>
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="px-6 md:px-12 max-w-2xl mx-auto pb-20"
+        >
+          <div className="border border-alert bg-alert/5 p-6 md:p-8">
+            <p className="text-kicker mb-3">
+              <span className="text-alert">●</span>&nbsp;&nbsp;Error
+            </p>
+            <p className="font-display text-2xl md:text-3xl text-text mb-6 leading-tight">
+              {errorMsg}
+            </p>
             <button
               type="button"
               onClick={handleRetry}
-              className="mt-3 bg-alert hover:bg-alert/80 text-text font-display font-bold uppercase px-6 py-2 rounded-md"
+              className="bg-text text-bg font-display font-bold uppercase tracking-wider px-6 py-3 hover:bg-muted-fg transition-colors"
             >
-              Try Again
+              Try Again →
             </button>
           </div>
-        </div>
+        </motion.div>
       )}
 
-      {stage === 'loading' && <LoadingOverlay />}
+      <AnimatePresence>
+        {stage === 'loading' && <LoadingOverlay />}
+      </AnimatePresence>
 
-      {stage === 'result' && plan && (
-        <div ref={resultRef} className="pb-12">
-          <PlanGrid plan={plan} />
-        </div>
-      )}
+      <AnimatePresence>
+        {stage === 'result' && plan && (
+          <motion.div
+            key="result-wrap"
+            ref={resultRef}
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+            className="pb-12"
+          >
+            <PlanGrid plan={plan} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   )
 }
