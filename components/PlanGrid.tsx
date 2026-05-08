@@ -1,17 +1,18 @@
 'use client'
 
 import { motion } from 'motion/react'
-import type { PlanType } from '@/lib/schema'
+import type { PlanType, IntakeInput } from '@/lib/schema'
 import { DayCard } from './DayCard'
 import { ShoppingList } from './ShoppingList'
 import { LeadCapture } from './LeadCapture'
 
 interface PlanGridProps {
   plan: PlanType
+  intake?: IntakeInput
   showLeadCapture?: boolean
 }
 
-export function PlanGrid({ plan, showLeadCapture = true }: PlanGridProps) {
+export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps) {
   const totalMeals = plan.days.reduce((sum, d) => sum + d.meals.length, 0)
 
   return (
@@ -79,7 +80,7 @@ export function PlanGrid({ plan, showLeadCapture = true }: PlanGridProps) {
       {showLeadCapture && (
         <>
           <hr className="rule-gold mx-6 md:mx-12" />
-          <LeadCapture />
+          <LeadCapture plan={plan} intake={intake} />
         </>
       )}
 

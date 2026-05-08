@@ -112,7 +112,26 @@ export type ShoppingSectionType = z.infer<typeof ShoppingSection>
 export const Lead = z.object({
   email: z.string().email().max(200),
   phone: z.string().min(7).max(30),
+  firstName: z.string().max(100).default(''),
+  lastName: z.string().max(100).default(''),
   consentToContact: z.boolean().default(true),
 })
 
 export type LeadInput = z.infer<typeof Lead>
+
+// Lead with optional generated plan + intake snapshot.
+// Used by /api/lead so GHL can render personalised emails.
+export const LeadWithPlan = Lead.extend({
+  plan: Plan.optional(),
+  intake: z.object({
+    goal: Goal,
+    calories: z.number().int(),
+    protein: z.number().int(),
+    mealsPerDay: MealsPerDay,
+    fastBreakfast: z.boolean(),
+    trainingDays: z.number().int().min(0).max(7).optional(),
+    dietStyle: DietStyle.optional(),
+  }).optional(),
+})
+
+export type LeadWithPlanInput = z.infer<typeof LeadWithPlan>

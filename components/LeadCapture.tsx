@@ -5,12 +5,17 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { motion, AnimatePresence } from 'motion/react'
 import { z } from 'zod'
-import { Lead, type LeadInput } from '@/lib/schema'
+import { Lead, type LeadInput, type PlanType, type IntakeInput } from '@/lib/schema'
 
 type LeadFormValues = z.input<typeof Lead>
 type Status = 'idle' | 'submitting' | 'sent' | 'error'
 
-export function LeadCapture() {
+interface LeadCaptureProps {
+  plan?: PlanType
+  intake?: IntakeInput
+}
+
+export function LeadCapture({ plan, intake }: LeadCaptureProps) {
   const [status, setStatus] = useState<Status>('idle')
   const [errorMsg, setErrorMsg] = useState('')
 
@@ -20,17 +25,20 @@ export function LeadCapture() {
     formState: { errors },
   } = useForm<LeadFormValues, undefined, LeadInput>({
     resolver: zodResolver(Lead),
-    defaultValues: { email: '', phone: '', consentToContact: true },
+    defaultValues: { email: '', phone: '', firstName: '', consentToContact: true },
   })
 
   async function onSubmit(values: LeadInput): Promise<void> {
     setStatus('submitting')
     setErrorMsg('')
     try {
+      const payload = plan && intake
+        ? { ...values, plan, intake: pickIntakeForGHL(intake) }
+        : values
       const res = await fetch('/api/lead', {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
-        body: JSON.stringify(values),
+        body: JSON.stringify(payload),
       })
       if (!res.ok) {
         const body = await res.json().catch(() => ({}))
@@ -40,6 +48,18 @@ export function LeadCapture() {
     } catch (err) {
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong.')
       setStatus('error')
+    }
+  }
+
+  function pickIntakeForGHL(i: IntakeInput) {
+    return {
+      goal: i.goal,
+      calories: i.calories,
+      protein: i.protein,
+      mealsPerDay: i.mealsPerDay,
+      fastBreakfast: i.fastBreakfast,
+      trainingDays: i.trainingDays,
+      dietStyle: i.dietStyle,
     }
   }
 
@@ -87,6 +107,18 @@ export function LeadCapture() {
               exit={{ opacity: 0 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
             >
+              <div className="md:col-span-2 border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+                <label htmlFor="lead-firstName" className="block text-kicker mb-2">First Name</label>
+                <input
+                  id="lead-firstName"
+                  type="text"
+                  placeholder="Mate"
+                  autoComplete="given-name"
+                  {...register('firstName')}
+                  className="w-full bg-transparent text-text font-display text-xl md:text-2xl outline-none placeholder:text-faint placeholder:italic placeholder:font-light"
+                />
+              </div>
+
               <div className="border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
                 <label htmlFor="lead-email" className="block text-kicker mb-2">Email</label>
                 <input

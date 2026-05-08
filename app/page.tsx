@@ -13,6 +13,7 @@ type Stage = 'idle' | 'form' | 'loading' | 'result' | 'error'
 export default function HomePage() {
   const [stage, setStage] = useState<Stage>('idle')
   const [plan, setPlan] = useState<PlanType | null>(null)
+  const [submittedIntake, setSubmittedIntake] = useState<IntakeInput | null>(null)
   const [errorMsg, setErrorMsg] = useState('')
   const formRef = useRef<HTMLDivElement>(null)
   const resultRef = useRef<HTMLDivElement>(null)
@@ -37,6 +38,7 @@ export default function HomePage() {
       }
       const data: PlanType = await res.json()
       setPlan(data)
+      setSubmittedIntake(intake)
       setStage('result')
       setTimeout(() => resultRef.current?.scrollIntoView({ behavior: 'smooth' }), 80)
     } catch (err) {
@@ -111,7 +113,7 @@ export default function HomePage() {
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
             className="pb-12"
           >
-            <PlanGrid plan={plan} />
+            <PlanGrid plan={plan} intake={submittedIntake ?? undefined} />
           </motion.div>
         )}
       </AnimatePresence>
