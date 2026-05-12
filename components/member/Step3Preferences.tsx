@@ -19,7 +19,7 @@ interface Step3PreferencesProps {
   onBack: () => void
 }
 
-const DIET_OPTIONS: DietStyle[] = ['omnivore', 'vegetarian', 'vegan', 'keto', 'paleo']
+const DIET_OPTIONS: DietStyle[] = ['omnivore', 'vegetarian', 'vegan']
 const CUISINE_OPTIONS: Cuisine[] = ['Italian', 'Asian', 'Mediterranean', 'Mexican', 'American']
 const MEAL_OPTIONS = [3, 4, 5] as const
 
@@ -51,11 +51,11 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
     <section className="relative px-6 md:px-12 py-16 md:py-24 max-w-5xl mx-auto">
       <header className="mb-10 md:mb-14">
         <p className="text-kicker mb-4">
-          <span className="text-gold">03</span>&nbsp;&nbsp;Dial in the Plan
+          <span className="text-blue">03</span>&nbsp;&nbsp;Dial in the Plan
         </p>
         <h1 className="text-display-lg mb-6">
           Last few<br />
-          <span className="text-italic-display text-gold">preferences.</span>
+          <span className="text-italic-display text-blue">preferences.</span>
         </h1>
         <p className="text-muted-fg text-lg max-w-xl font-display font-light leading-snug">
           Already locked in: {calories} cal, {protein}g protein, {goal}. Now tell us how you eat.
@@ -80,7 +80,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
                 type="button"
                 onClick={() => setMealsPerDay(n)}
                 aria-pressed={mealsPerDay === n}
-                className={`flex flex-col items-center gap-1 py-4 md:py-5 border transition-all ${mealsPerDay === n ? 'border-gold bg-bg shadow-[0_0_0_1px_var(--color-gold)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
+                className={`flex flex-col items-center gap-1 py-4 md:py-5 border transition-all ${mealsPerDay === n ? 'border-blue bg-bg shadow-[0_0_0_1px_var(--color-blue)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
               >
                 <span className="font-display text-3xl md:text-4xl font-bold text-text">{n}</span>
                 <span className="text-kicker">{n === 3 ? 'three squares' : n === 4 ? 'three plus snack' : 'plus two snacks'}</span>
@@ -105,7 +105,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
                 Skip breakfast, eat later. Intermittent fasting style.
               </p>
             </div>
-            <div className={`relative inline-flex w-14 h-8 rounded-full border transition-colors flex-shrink-0 ${fastBreakfast ? 'bg-gold border-gold' : 'bg-elevated border-bba-border-strong'}`}>
+            <div className={`relative inline-flex w-14 h-8 rounded-full border transition-colors flex-shrink-0 ${fastBreakfast ? 'bg-blue border-blue' : 'bg-elevated border-bba-border-strong'}`}>
               <span className={`absolute top-0.5 w-7 h-7 rounded-full transition-transform ${fastBreakfast ? 'translate-x-6 bg-bg' : 'translate-x-0.5 bg-text'}`} />
             </div>
           </button>
@@ -117,7 +117,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
             <p className="font-display text-xl md:text-2xl text-text">
               Training <span className="text-italic-display text-muted-fg">days</span> per week
             </p>
-            <span className="text-numeral text-display-lg text-gold leading-none">
+            <span className="text-numeral text-display-lg text-blue leading-none">
               {String(trainingDays).padStart(2, '0')}
             </span>
           </div>
@@ -128,7 +128,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
             step={1}
             value={trainingDays}
             onChange={(e) => setTrainingDays(Number(e.target.value))}
-            className="w-full accent-gold"
+            className="w-full accent-blue"
           />
           <div className="flex justify-between text-kicker mt-2">
             {[0, 1, 2, 3, 4, 5, 6, 7].map((n) => (<span key={n}>{n}</span>))}
@@ -144,7 +144,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
                 type="button"
                 onClick={() => setDietStyle(s)}
                 aria-pressed={dietStyle === s}
-                className={`px-5 md:px-6 py-3 md:py-3.5 border font-display font-semibold tracking-wide capitalize transition-all ${dietStyle === s ? 'bg-gold text-bg border-gold' : 'border-bba-border bg-surface text-text hover:border-bba-border-strong'}`}
+                className={`px-5 md:px-6 py-3 md:py-3.5 border font-display font-semibold tracking-wide capitalize transition-all ${dietStyle === s ? 'bg-blue text-bg border-blue' : 'border-bba-border bg-surface text-text hover:border-bba-border-strong'}`}
               >
                 {s}
               </button>
@@ -163,7 +163,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
                   type="button"
                   onClick={() => toggleCuisine(c)}
                   aria-pressed={active}
-                  className={`px-5 md:px-6 py-3 md:py-3.5 border font-display font-semibold tracking-wide transition-all ${active ? 'bg-gold text-bg border-gold' : 'border-bba-border bg-surface text-text hover:border-bba-border-strong'}`}
+                  className={`px-5 md:px-6 py-3 md:py-3.5 border font-display font-semibold tracking-wide transition-all ${active ? 'bg-blue text-bg border-blue' : 'border-bba-border bg-surface text-text hover:border-bba-border-strong'}`}
                 >
                   {c}
                 </button>
@@ -194,7 +194,7 @@ export function Step3Preferences({ calories, protein, goal, onNext, onBack }: St
           <button
             type="submit"
             disabled={submitting}
-            className="group bg-gold text-bg font-display font-bold uppercase tracking-wider px-8 md:px-12 py-4 md:py-5 text-base md:text-lg hover:bg-gold-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            className="group bg-blue text-bg font-display font-bold uppercase tracking-wider px-8 md:px-12 py-4 md:py-5 text-base md:text-lg hover:bg-blue-hover transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
             <span className="inline-flex items-center justify-center gap-3">
               Cut My Week
@@ -218,7 +218,7 @@ function Field({ label, caption, children }: FieldProps) {
     <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10">
       <div className="md:pt-2">
         <p className="text-kicker">
-          <span className="text-gold">{label}</span>
+          <span className="text-blue">{label}</span>
           <span className="block mt-2 text-faint">{caption}</span>
         </p>
       </div>
@@ -238,7 +238,7 @@ function Stat({ label, value, highlight, capitalize }: StatProps) {
   return (
     <div>
       <p className="text-kicker mb-1">{label}</p>
-      <p className={`text-numeral font-display text-2xl md:text-3xl font-bold leading-none ${highlight ? 'text-gold' : 'text-text'} ${capitalize ? 'capitalize' : ''}`}>
+      <p className={`text-numeral font-display text-2xl md:text-3xl font-bold leading-none ${highlight ? 'text-blue' : 'text-text'} ${capitalize ? 'capitalize' : ''}`}>
         {value}
       </p>
     </div>
@@ -255,7 +255,7 @@ interface FreeTextProps {
 
 function FreeText({ id, label, placeholder, value, onChange }: FreeTextProps) {
   return (
-    <div className="border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+    <div className="border-b-2 border-bba-border focus-within:border-blue transition-colors pb-3">
       <label htmlFor={id} className="block text-kicker mb-2">{label}</label>
       <input
         id={id}

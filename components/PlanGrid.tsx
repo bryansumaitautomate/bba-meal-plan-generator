@@ -26,10 +26,10 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
           className="mb-12 md:mb-16"
         >
           <p className="text-kicker mb-4">
-            <span className="text-gold">03</span>&nbsp;&nbsp;The Plan
+            <span className="text-blue">03</span>&nbsp;&nbsp;The Plan
           </p>
           <h2 className="text-display-lg mb-2">
-            Your <span className="text-italic-display text-gold">week.</span>
+            Your <span className="text-italic-display text-blue">week.</span>
           </h2>
           <p className="text-muted-fg text-lg max-w-xl font-display font-light leading-snug">
             Seven days. {totalMeals} meals. Cut for you.
@@ -45,7 +45,7 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
         >
           <span
             aria-hidden="true"
-            className="absolute -left-2 md:-left-6 -top-8 md:-top-16 font-display text-gold leading-none select-none pointer-events-none glyph-quote"
+            className="absolute -left-2 md:-left-6 -top-8 md:-top-16 font-display text-blue leading-none select-none pointer-events-none glyph-quote"
           >
             &ldquo;
           </span>
@@ -53,7 +53,7 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
             <span className="text-italic-display font-bold">{plan.coachNote}</span>
           </p>
           <footer className="mt-6 md:mt-8 pl-6 md:pl-12 flex items-center gap-4">
-            <div className="h-px w-12 bg-gold" />
+            <div className="h-px w-12 bg-blue" />
             <p className="text-kicker">
               <span className="text-text">Jase Stuart</span>
               &nbsp;&nbsp;The Better Body Coach
@@ -61,7 +61,7 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
           </footer>
         </motion.blockquote>
 
-        <hr className="rule-gold" />
+        <hr className="rule-brand" />
 
         {/* Day grid — magazine spread */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-12 md:mt-16">
@@ -71,7 +71,7 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
         </div>
       </section>
 
-      <hr className="rule-gold mx-6 md:mx-12" />
+      <hr className="rule-brand mx-6 md:mx-12" />
 
       {/* Shopping list — Jase's request 41:29 */}
       <ShoppingList sections={plan.shoppingList} />
@@ -79,7 +79,7 @@ export function PlanGrid({ plan, intake, showLeadCapture = true }: PlanGridProps
       {/* Lead capture — non-member only, 44:40 */}
       {showLeadCapture && (
         <>
-          <hr className="rule-gold mx-6 md:mx-12" />
+          <hr className="rule-brand mx-6 md:mx-12" />
           <LeadCapture plan={plan} intake={intake} />
         </>
       )}

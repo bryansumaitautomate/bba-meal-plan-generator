@@ -55,17 +55,34 @@ CONSTRAINTS:
 - If "fast breakfast" is on, REPLACE Breakfast with later-day meal volume:
   Use only Lunch, Dinner, Snack (and Snack 2 for 5 meals). Total meal count stays the same.
 - Daily totals must hit calorie target within 5% and protein target within 5g.
-- Honor allergies absolutely. Honor dietStyle (vegan = zero animal products of any kind).
+- Honor allergies absolutely.
+- Honor dietStyle. Diet styles we support: omnivore, vegetarian, vegan.
+  We DO NOT do keto, paleo, or any other fad diet. Do not suggest them.
 - Vary meals across the week. No repeating any meal name.
 - On training days, slightly higher carbs around the workout slot.
 - Macros (protein, carbs, fat) sum sensibly to calories (4/4/9 cal per gram).
 
+PORTION SIZES (non-negotiable):
+- Every ingredient entry MUST include a portion size so the client knows
+  exactly how much to eat. No vague items like "chicken breast" or "rice".
+- Use metric units by default: grams (g) for solids, millilitres (ml) for
+  liquids, whole counts for discrete items.
+- Format: "<quantity> <unit> <ingredient>". Examples:
+  "180g chicken breast", "60g rolled oats", "250ml whole milk",
+  "1 medium banana", "2 large eggs", "30g almonds", "1 tbsp olive oil",
+  "100g cooked basmati rice", "150g greek yoghurt".
+- Quantities must be sensible for ONE serving of THAT meal (not the whole day).
+- The day's total macros must reconcile to the portions listed.
+
 SHOPPING LIST:
-- Aggregate every ingredient used across the entire week.
+- Aggregate every ingredient used across the entire week with TOTAL weekly quantity.
 - Group by category: Produce, Proteins, Grains & Carbs, Dairy & Eggs, Pantry, Other.
 - Skip categories that have no items.
-- Combine duplicates ("chicken breast" appearing in 5 meals = one entry).
-- Add rough quantity hints when natural (e.g. "chicken breast (2kg)", "spinach (3 bunches)").
+- Combine duplicates by summing portions ("chicken breast" appearing 5x at
+  180g = "1.2kg chicken breast (chicken breast x6 meals)" or simply "1.2kg chicken breast").
+- Format: "<total weekly quantity> <ingredient>". Examples:
+  "1.2kg chicken breast", "500g rolled oats", "2L whole milk",
+  "14 large eggs", "300g almonds", "200ml olive oil".
 - Items should be plain shopping language, not recipe instructions.`
 }
 

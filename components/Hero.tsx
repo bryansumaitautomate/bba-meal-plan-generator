@@ -2,6 +2,7 @@
 
 import { motion } from 'motion/react'
 import Link from 'next/link'
+import { BBALogo } from './BBALogo'
 
 interface HeroProps {
   onCta: () => void
@@ -16,19 +17,16 @@ export function Hero({ onCta }: HeroProps) {
       {/* Top kicker bar */}
       <header className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <span className="font-display text-2xl font-bold tracking-tight">
-            <span className="text-text">B</span>
-            <span className="text-gold">B</span>
-          </span>
+          <BBALogo size={48} />
           <span className="text-kicker hidden sm:inline">Better Body Academy</span>
         </div>
         <div className="flex items-center gap-4 md:gap-6">
           <Link
             href="/member"
-            className="text-kicker hover:text-gold transition-colors group inline-flex items-center gap-2"
+            className="text-kicker hover:text-blue transition-colors group inline-flex items-center gap-2"
           >
             <span>Member</span>
-            <span aria-hidden="true" className="text-gold transition-transform group-hover:translate-x-0.5">→</span>
+            <span aria-hidden="true" className="text-blue transition-transform group-hover:translate-x-0.5">→</span>
           </Link>
           <span className="text-kicker hidden sm:inline text-faint">Issue 01 / 2026</span>
         </div>
@@ -58,13 +56,13 @@ export function Hero({ onCta }: HeroProps) {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-kicker mb-6 md:mb-8"
           >
-            <span className="text-gold">●</span>&nbsp;&nbsp;The Transformation Brief
+            <span className="text-blue">●</span>&nbsp;&nbsp;The Transformation Brief
           </motion.p>
 
           <h1 className="text-display-xl mb-8 md:mb-10">
             <RevealLine delay={0.15}>Your week.</RevealLine>
             <RevealLine delay={0.3}>
-              <span className="text-italic-display text-gold">Real</span> food.
+              <span className="text-italic-display text-blue">Real</span> food.
             </RevealLine>
             <RevealLine delay={0.45}>No BS.</RevealLine>
           </h1>
@@ -87,7 +85,7 @@ export function Hero({ onCta }: HeroProps) {
             <button
               type="button"
               onClick={onCta}
-              className="group relative overflow-hidden bg-gold text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-5 text-base md:text-lg rounded-none transition-all hover:bg-gold-hover focus-visible:outline-2 focus-visible:outline-gold focus-visible:outline-offset-4"
+              className="group relative overflow-hidden bg-blue text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-5 text-base md:text-lg rounded-none transition-all hover:bg-blue-hover focus-visible:outline-2 focus-visible:outline-blue focus-visible:outline-offset-4"
             >
               <span className="relative z-10 inline-flex items-center gap-3">
                 Generate Your Week
@@ -115,7 +113,7 @@ export function Hero({ onCta }: HeroProps) {
             Variations on demand
           </div>
           <div>
-            <span className="block text-text font-display text-2xl font-bold mb-1 text-gold">No BS</span>
+            <span className="block text-text font-display text-2xl font-bold mb-1 text-blue">No BS</span>
             Honest plans, real food
           </div>
         </div>

@@ -93,9 +93,9 @@ export default function MemberPage() {
           <Link href="/" className="flex items-center gap-3 group">
             <span className="font-display text-2xl font-bold tracking-tight">
               <span className="text-text">B</span>
-              <span className="text-gold">B</span>
+              <span className="text-blue">B</span>
             </span>
-            <span className="text-kicker hidden sm:inline group-hover:text-gold transition-colors">Member</span>
+            <span className="text-kicker hidden sm:inline group-hover:text-blue transition-colors">Member</span>
           </Link>
           <StepIndicator stage={stage} />
         </div>
@@ -213,7 +213,7 @@ function StepIndicator({ stage }: StepIndicatorProps) {
         return (
           <span
             key={l.key}
-            className={`text-kicker ${isActive ? 'text-gold' : isDone ? 'text-text' : 'text-faint'}`}
+            className={`text-kicker ${isActive ? 'text-blue' : isDone ? 'text-text' : 'text-faint'}`}
           >
             <span className="hidden md:inline">{l.label}</span>
             <span className="md:hidden">{String(i + 1).padStart(2, '0')}</span>

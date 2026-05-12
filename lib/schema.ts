@@ -4,7 +4,7 @@ import { z } from 'zod'
 // Shared option enums (kept aligned with form UI)
 // ────────────────────────────────────────────────────────────
 
-export const DietStyle = z.enum(['omnivore', 'vegetarian', 'vegan', 'keto', 'paleo'])
+export const DietStyle = z.enum(['omnivore', 'vegetarian', 'vegan'])
 export const Cuisine = z.enum(['Italian', 'Asian', 'Mediterranean', 'Mexican', 'American'])
 export const Goal = z.enum(['cut', 'maintain', 'gain'])
 export const ActivityLevel = z.enum(['sedentary', 'light', 'moderate', 'active', 'very_active'])

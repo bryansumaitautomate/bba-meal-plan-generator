@@ -31,14 +31,14 @@ export function DayCard({ day, index }: DayCardProps) {
       <header className="flex items-start justify-between gap-4 mb-6 pb-5 border-b border-bba-border">
         <div>
           <p className="text-kicker mb-1">
-            <span className="text-gold">DAY</span>&nbsp;&nbsp;{String(index + 1).padStart(2, '0')}
+            <span className="text-blue">DAY</span>&nbsp;&nbsp;{String(index + 1).padStart(2, '0')}
           </p>
           <h3 className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight leading-none">
             {day.name}
           </h3>
         </div>
         <div className="text-right">
-          <p className="text-numeral font-display text-3xl md:text-4xl font-bold text-gold leading-none">
+          <p className="text-numeral font-display text-3xl md:text-4xl font-bold text-blue leading-none">
             {day.totals.calories}
           </p>
           <p className="text-kicker mt-1">cal · {day.totals.protein}g pro</p>

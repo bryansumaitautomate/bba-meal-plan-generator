@@ -74,15 +74,15 @@ export function LeadCapture({ plan, intake }: LeadCaptureProps) {
       <div className="relative bg-surface border border-bba-border p-8 md:p-12 overflow-hidden">
         {/* Gold corner accent */}
         <div aria-hidden="true" className="absolute top-0 right-0 w-24 h-24">
-          <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-gold to-transparent" />
-          <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-gold to-transparent" />
+          <div className="absolute top-0 right-0 w-full h-px bg-gradient-to-l from-blue to-transparent" />
+          <div className="absolute top-0 right-0 h-full w-px bg-gradient-to-b from-blue to-transparent" />
         </div>
 
         <p className="text-kicker mb-3">
-          <span className="text-gold">●</span>&nbsp;&nbsp;Want this in your inbox?
+          <span className="text-blue">●</span>&nbsp;&nbsp;Want this in your inbox?
         </p>
         <h3 className="text-display-md mb-4">
-          Get the <span className="text-italic-display text-gold">PDF + shopping list</span> emailed.
+          Get the <span className="text-italic-display text-blue">PDF + shopping list</span> emailed.
         </h3>
         <p className="text-muted-fg text-base md:text-lg max-w-xl mb-8 leading-snug">
           Drop your details. We'll send the plan as a clean PDF with the shopping list ready to print or share.
@@ -107,7 +107,7 @@ export function LeadCapture({ plan, intake }: LeadCaptureProps) {
               exit={{ opacity: 0 }}
               className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
             >
-              <div className="md:col-span-2 border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+              <div className="md:col-span-2 border-b-2 border-bba-border focus-within:border-blue transition-colors pb-3">
                 <label htmlFor="lead-firstName" className="block text-kicker mb-2">First Name</label>
                 <input
                   id="lead-firstName"
@@ -119,7 +119,7 @@ export function LeadCapture({ plan, intake }: LeadCaptureProps) {
                 />
               </div>
 
-              <div className="border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+              <div className="border-b-2 border-bba-border focus-within:border-blue transition-colors pb-3">
                 <label htmlFor="lead-email" className="block text-kicker mb-2">Email</label>
                 <input
                   id="lead-email"
@@ -132,7 +132,7 @@ export function LeadCapture({ plan, intake }: LeadCaptureProps) {
                 {errors.email && <p className="text-alert text-kicker mt-2">{errors.email.message}</p>}
               </div>
 
-              <div className="border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+              <div className="border-b-2 border-bba-border focus-within:border-blue transition-colors pb-3">
                 <label htmlFor="lead-phone" className="block text-kicker mb-2">Phone</label>
                 <input
                   id="lead-phone"
@@ -149,7 +149,7 @@ export function LeadCapture({ plan, intake }: LeadCaptureProps) {
                 <button
                   type="submit"
                   disabled={status === 'submitting'}
-                  className="group bg-gold text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-gold-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  className="group bg-blue text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-blue-hover disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
                   <span className="inline-flex items-center gap-3">
                     {status === 'submitting' ? 'Sending...' : 'Email me the plan'}

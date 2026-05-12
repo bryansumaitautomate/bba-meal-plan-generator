@@ -47,11 +47,11 @@ export function Step1Maintenance({ defaults, onNext }: Step1MaintenanceProps) {
     <section className="relative px-6 md:px-12 py-16 md:py-24 max-w-5xl mx-auto">
       <header className="mb-12 md:mb-16">
         <p className="text-kicker mb-4">
-          <span className="text-gold">01</span>&nbsp;&nbsp;Find Your Maintenance
+          <span className="text-blue">01</span>&nbsp;&nbsp;Find Your Maintenance
         </p>
         <h1 className="text-display-lg mb-6">
           Let's find your<br />
-          <span className="text-italic-display text-gold">maintenance calories.</span>
+          <span className="text-italic-display text-blue">maintenance calories.</span>
         </h1>
         <p className="text-muted-fg text-lg max-w-xl font-display font-light leading-snug">
           The number you can eat without gaining or losing. We'll calculate it from a few stats.
@@ -68,7 +68,7 @@ export function Step1Maintenance({ defaults, onNext }: Step1MaintenanceProps) {
                 type="button"
                 onClick={() => setSex(s)}
                 aria-pressed={sex === s}
-                className={`p-5 md:p-6 border text-left transition-all capitalize ${sex === s ? 'border-gold bg-bg shadow-[0_0_0_1px_var(--color-gold)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
+                className={`p-5 md:p-6 border text-left transition-all capitalize ${sex === s ? 'border-blue bg-bg shadow-[0_0_0_1px_var(--color-blue)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
               >
                 <span className="font-display text-2xl md:text-3xl font-bold uppercase tracking-tight text-text">
                   {s}
@@ -96,7 +96,7 @@ export function Step1Maintenance({ defaults, onNext }: Step1MaintenanceProps) {
                 type="button"
                 onClick={() => setActivityLevel(opt.value)}
                 aria-pressed={activityLevel === opt.value}
-                className={`p-5 md:p-6 border text-left transition-all ${activityLevel === opt.value ? 'border-gold bg-bg shadow-[0_0_0_1px_var(--color-gold)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
+                className={`p-5 md:p-6 border text-left transition-all ${activityLevel === opt.value ? 'border-blue bg-bg shadow-[0_0_0_1px_var(--color-blue)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
               >
                 <p className="font-display text-xl md:text-2xl font-bold text-text mb-1">{opt.label}</p>
                 <p className="text-kicker">{opt.sub}</p>
@@ -121,7 +121,7 @@ export function Step1Maintenance({ defaults, onNext }: Step1MaintenanceProps) {
           </div>
           <div>
             <p className="text-kicker mb-2">Maintenance</p>
-            <p className="text-numeral font-display text-5xl md:text-6xl font-bold text-gold leading-none">
+            <p className="text-numeral font-display text-5xl md:text-6xl font-bold text-blue leading-none">
               {preview.tdee}
             </p>
             <p className="text-kicker mt-2 text-faint">Cal per day</p>
@@ -129,7 +129,7 @@ export function Step1Maintenance({ defaults, onNext }: Step1MaintenanceProps) {
           <div className="md:flex md:justify-end md:col-span-1 col-span-2">
             <button
               type="submit"
-              className="group bg-gold text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-gold-hover transition-colors w-full md:w-auto"
+              className="group bg-blue text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-blue-hover transition-colors w-full md:w-auto"
             >
               <span className="inline-flex items-center justify-center gap-3">
                 Continue
@@ -154,7 +154,7 @@ function Field({ label, caption, children }: FieldProps) {
     <div className="grid grid-cols-1 md:grid-cols-[140px_1fr] gap-4 md:gap-10">
       <div className="md:pt-2">
         <p className="text-kicker">
-          <span className="text-gold">{label}</span>
+          <span className="text-blue">{label}</span>
           <span className="block mt-2 text-faint">{caption}</span>
         </p>
       </div>
@@ -176,7 +176,7 @@ interface NumberInputProps {
 
 function NumberInput({ id, label, suffix, value, onChange, min, max, step = 1 }: NumberInputProps) {
   return (
-    <div className="border-b-2 border-bba-border focus-within:border-gold transition-colors pb-3">
+    <div className="border-b-2 border-bba-border focus-within:border-blue transition-colors pb-3">
       <label htmlFor={id} className="block text-kicker mb-2">{label}</label>
       <div className="flex items-baseline gap-3">
         <input

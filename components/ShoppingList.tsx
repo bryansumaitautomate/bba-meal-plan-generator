@@ -21,15 +21,15 @@ export function ShoppingList({ sections }: ShoppingListProps) {
       <header className="mb-10 md:mb-14 flex items-end justify-between gap-6 flex-wrap">
         <div>
           <p className="text-kicker mb-4">
-            <span className="text-gold">04</span>&nbsp;&nbsp;The Cart
+            <span className="text-blue">04</span>&nbsp;&nbsp;The Cart
           </p>
           <h2 className="text-display-lg">
-            Shopping <span className="text-italic-display text-gold">list.</span>
+            Shopping <span className="text-italic-display text-blue">list.</span>
           </h2>
         </div>
         <div className="text-right">
           <p className="text-kicker mb-1">Items</p>
-          <p className="text-numeral font-display text-3xl md:text-5xl font-bold text-gold leading-none">
+          <p className="text-numeral font-display text-3xl md:text-5xl font-bold text-blue leading-none">
             {totalItems}
           </p>
         </div>
@@ -56,7 +56,7 @@ export function ShoppingList({ sections }: ShoppingListProps) {
                 <li key={`${section.category}-${i}`} className="flex items-start gap-3 group">
                   <span
                     aria-hidden="true"
-                    className="mt-1.5 inline-block w-3 h-px bg-faint flex-shrink-0 group-hover:bg-gold group-hover:w-5 transition-all"
+                    className="mt-1.5 inline-block w-3 h-px bg-faint flex-shrink-0 group-hover:bg-blue group-hover:w-5 transition-all"
                   />
                   <span className="text-text leading-snug">{item}</span>
                 </li>

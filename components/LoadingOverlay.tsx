@@ -52,7 +52,7 @@ export function LoadingOverlay() {
       {/* ─── BACKGROUND MARQUEES ─── */}
       <div className="absolute inset-0 z-0 flex flex-col justify-between py-20 md:py-32 pointer-events-none select-none" aria-hidden="true">
         <Marquee text={MARQUEE_TOP} direction="left" speed={45} className="text-text/[0.04]" />
-        <Marquee text={MARQUEE_BOTTOM} direction="right" speed={60} className="text-gold/[0.06]" />
+        <Marquee text={MARQUEE_BOTTOM} direction="right" speed={60} className="text-blue/[0.06]" />
       </div>
 
       {/* ─── TOP STATUS BAR ─── */}
@@ -61,7 +61,7 @@ export function LoadingOverlay() {
           <motion.span
             animate={{ opacity: [1, 0.3, 1] }}
             transition={{ duration: 1.2, repeat: Infinity }}
-            className="inline-block w-2 h-2 rounded-full bg-gold"
+            className="inline-block w-2 h-2 rounded-full bg-blue"
           />
           <p className="text-kicker text-text">Generating</p>
         </div>
@@ -82,7 +82,7 @@ export function LoadingOverlay() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.18 }}
-              className="text-kicker text-gold tracking-[0.4em]"
+              className="text-kicker text-blue tracking-[0.4em]"
             >
               · {SLOTS[slotIdx]} ·
             </motion.p>
@@ -117,7 +117,7 @@ export function LoadingOverlay() {
 
         {/* Status line under tickers */}
         <p className="mt-12 md:mt-16 text-kicker text-faint">
-          Cooking up your week.&nbsp;&nbsp;<span className="text-gold">No BS plans here.</span>
+          Cooking up your week.&nbsp;&nbsp;<span className="text-blue">No BS plans here.</span>
         </p>
       </div>
 
@@ -129,7 +129,7 @@ export function LoadingOverlay() {
         </div>
         <div className="h-px w-full bg-bba-border-strong relative overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-gold"
+            className="absolute inset-y-0 left-0 bg-blue"
             animate={{ width: `${counter}%` }}
             transition={{ duration: 0.3 }}
           />
@@ -222,7 +222,7 @@ function MacroTicker({ label, target, suffix = '', highlight, static: isStatic }
   return (
     <div className="text-center">
       <p className="text-kicker mb-2">{label}</p>
-      <p className={`font-display text-numeral text-3xl md:text-5xl font-bold leading-none ${highlight ? 'text-gold' : 'text-text'}`}>
+      <p className={`font-display text-numeral text-3xl md:text-5xl font-bold leading-none ${highlight ? 'text-blue' : 'text-text'}`}>
         <span ref={ref}>0</span>
         {suffix && <span className="text-muted-fg text-base md:text-2xl ml-1">{suffix}</span>}
       </p>

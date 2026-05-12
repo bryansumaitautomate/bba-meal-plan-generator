@@ -5,21 +5,21 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  /* BBA brand tokens — editorial athletic palette */
+  /* BBA brand tokens — black / white / electric blue */
   --color-bg:        #0a0a0a;
   --color-surface:   #141414;
   --color-elevated:  #1a1a1a;
   --color-text:      #ffffff;
   --color-muted-fg:  #b0b0b0;
   --color-faint:     #707070;
-  --color-gold:      #d4a843;
-  --color-gold-hover:#e6bc5a;
+  --color-blue:      #00aeef;
+  --color-blue-hover:#1fb8f0;
   --color-success:   #34d399;
   --color-alert:     #ef4444;
   --color-bba-border:rgba(255,255,255,0.08);
   --color-bba-border-strong:rgba(255,255,255,0.16);
-  --color-paper:     #f4ede0;        /* warm magazine off-white for select moments */
-  --color-ink:       #0a0a0a;        /* on-paper text */
+  --color-paper:     #f4ede0;
+  --color-ink:       #0a0a0a;
 
   /* Brand fonts */
   --font-display: var(--font-outfit);
@@ -33,7 +33,7 @@
   --color-card-foreground: var(--color-text);
   --color-popover: var(--color-elevated);
   --color-popover-foreground: var(--color-text);
-  --color-primary: var(--color-gold);
+  --color-primary: var(--color-blue);
   --color-primary-foreground: var(--color-bg);
   --color-secondary: var(--color-elevated);
   --color-secondary-foreground: var(--color-text);
@@ -44,7 +44,7 @@
   --color-destructive: var(--color-alert);
   --color-border: var(--color-bba-border);
   --color-input: var(--color-bba-border);
-  --color-ring: var(--color-gold);
+  --color-ring: var(--color-blue);
 
   --radius-sm: calc(var(--radius) * 0.6);
   --radius-md: calc(var(--radius) * 0.8);
@@ -79,16 +79,16 @@
   }
 
   /* Editorial hairline rule used in spreads */
-  hr.rule-gold {
+  hr.rule-brand {
     border: 0;
     height: 1px;
-    background: linear-gradient(to right, transparent, var(--color-gold) 30%, var(--color-gold) 70%, transparent);
+    background: linear-gradient(to right, transparent, var(--color-blue) 30%, var(--color-blue) 70%, transparent);
     margin: 2.5rem 0;
   }
 
   /* Selection brand colour */
   ::selection {
-    background: var(--color-gold);
+    background: var(--color-blue);
     color: var(--color-bg);
   }
 }
@@ -147,7 +147,6 @@
 
 /* ────────────────────────────────────────────────────────────
    Grain overlay — subtle film texture on hero + key surfaces
-   Generated CSS-only, no asset
    ──────────────────────────────────────────────────────────── */
 
 @utility grain {
@@ -165,10 +164,9 @@
   background-repeat: repeat;
 }
 
-/* Vertical scroll-locked element */
 @utility vertical-rule {
   width: 1px;
-  background: linear-gradient(to bottom, transparent, var(--color-gold) 20%, var(--color-gold) 80%, transparent);
+  background: linear-gradient(to bottom, transparent, var(--color-blue) 20%, var(--color-blue) 80%, transparent);
 }
 
 /* ────────────────────────────────────────────────────────────
@@ -198,15 +196,15 @@
 }
 
 /* ────────────────────────────────────────────────────────────
-   Custom slider thumb (gold)
+   Custom slider thumb (blue)
    ──────────────────────────────────────────────────────────── */
 [data-slot="slider-thumb"] {
-  background: var(--color-gold) !important;
-  border-color: var(--color-gold) !important;
-  box-shadow: 0 0 0 4px rgba(212, 168, 67, 0.15);
+  background: var(--color-blue) !important;
+  border-color: var(--color-blue) !important;
+  box-shadow: 0 0 0 4px rgba(0, 174, 239, 0.18);
 }
 [data-slot="slider-range"] {
-  background: var(--color-gold) !important;
+  background: var(--color-blue) !important;
 }
 [data-slot="slider-track"] {
   background: var(--color-bba-border-strong) !important;

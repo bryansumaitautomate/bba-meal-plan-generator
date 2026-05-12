@@ -31,11 +31,11 @@ export function Step2Goal({ bmr, tdee, defaultGoal, onNext, onBack }: Step2GoalP
     <section className="relative px-6 md:px-12 py-16 md:py-24 max-w-5xl mx-auto">
       <header className="mb-10 md:mb-14">
         <p className="text-kicker mb-4">
-          <span className="text-gold">02</span>&nbsp;&nbsp;Pick the Direction
+          <span className="text-blue">02</span>&nbsp;&nbsp;Pick the Direction
         </p>
         <h1 className="text-display-lg mb-6">
           What are you<br />
-          <span className="text-italic-display text-gold">chasing?</span>
+          <span className="text-italic-display text-blue">chasing?</span>
         </h1>
         <p className="text-muted-fg text-lg max-w-xl font-display font-light leading-snug">
           Cut, maintain, or gain. We'll set targets from your maintenance number.
@@ -50,7 +50,7 @@ export function Step2Goal({ bmr, tdee, defaultGoal, onNext, onBack }: Step2GoalP
         </div>
         <div>
           <p className="text-kicker mb-1">Maintenance</p>
-          <p className="text-numeral font-display text-2xl md:text-3xl font-bold text-gold leading-none">{tdee}</p>
+          <p className="text-numeral font-display text-2xl md:text-3xl font-bold text-blue leading-none">{tdee}</p>
         </div>
       </div>
 
@@ -64,14 +64,14 @@ export function Step2Goal({ bmr, tdee, defaultGoal, onNext, onBack }: Step2GoalP
               type="button"
               onClick={() => setGoal(opt.value)}
               aria-pressed={isActive}
-              className={`p-6 md:p-8 border text-left transition-all ${isActive ? 'border-gold bg-bg shadow-[0_0_0_1px_var(--color-gold)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
+              className={`p-6 md:p-8 border text-left transition-all ${isActive ? 'border-blue bg-bg shadow-[0_0_0_1px_var(--color-blue)]' : 'border-bba-border bg-surface hover:border-bba-border-strong'}`}
             >
               <p className="text-kicker mb-3">{opt.offset}</p>
               <p className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-text mb-2">{opt.label}</p>
               <p className="text-muted-fg text-sm md:text-base mb-4">{opt.sub}</p>
               <div className="border-t border-bba-border pt-3">
                 <p className="text-kicker mb-1">Daily target</p>
-                <p className={`text-numeral font-display text-3xl md:text-4xl font-bold leading-none ${isActive ? 'text-gold' : 'text-text'}`}>
+                <p className={`text-numeral font-display text-3xl md:text-4xl font-bold leading-none ${isActive ? 'text-blue' : 'text-text'}`}>
                   {preview(opt.value)}
                 </p>
                 <p className="text-kicker mt-1 text-faint">cal</p>
@@ -93,7 +93,7 @@ export function Step2Goal({ bmr, tdee, defaultGoal, onNext, onBack }: Step2GoalP
         <button
           type="button"
           onClick={() => onNext(goal)}
-          className="group bg-gold text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-gold-hover transition-colors"
+          className="group bg-blue text-bg font-display font-bold uppercase tracking-wider px-8 md:px-10 py-4 md:py-5 text-base md:text-lg hover:bg-blue-hover transition-colors"
         >
           <span className="inline-flex items-center justify-center gap-3">
             Continue with {goal}
