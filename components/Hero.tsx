@@ -2,7 +2,6 @@
 
 import { motion } from 'motion/react'
 import Link from 'next/link'
-import { BBALogo } from './BBALogo'
 
 interface HeroProps {
   onCta: () => void
@@ -16,9 +15,12 @@ export function Hero({ onCta }: HeroProps) {
 
       {/* Top kicker bar */}
       <header className="relative z-10 px-6 md:px-12 pt-8 md:pt-12 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <BBALogo size={48} />
-          <span className="text-kicker hidden sm:inline">Better Body Academy</span>
+        <div className="flex items-center">
+          <img
+            src="/logo-horizontal.png"
+            alt="Better Body Academy"
+            className="h-9 md:h-11 w-auto object-contain"
+          />
         </div>
         <div className="flex items-center gap-4 md:gap-6">
           <Link

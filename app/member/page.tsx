@@ -91,10 +91,11 @@ export default function MemberPage() {
         <div className="grain-overlay" aria-hidden="true" />
         <div className="relative z-10 px-6 md:px-12 py-6 md:py-8 flex items-center justify-between border-b border-bba-border">
           <Link href="/" className="flex items-center gap-3 group">
-            <span className="font-display text-2xl font-bold tracking-tight">
-              <span className="text-text">B</span>
-              <span className="text-blue">B</span>
-            </span>
+            <img
+              src="/logo-horizontal.png"
+              alt="Better Body Academy"
+              className="h-8 md:h-10 w-auto object-contain"
+            />
             <span className="text-kicker hidden sm:inline group-hover:text-blue transition-colors">Member</span>
           </Link>
           <StepIndicator stage={stage} />
