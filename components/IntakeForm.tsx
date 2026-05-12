@@ -135,12 +135,14 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
                   <ToggleGroupItem
                     key={opt.value}
                     value={opt.value}
-                    className="flex flex-col items-start gap-2 p-6 md:p-7 border border-bba-border bg-surface text-left transition-all hover:border-bba-border-strong data-[pressed]:bg-bg data-[pressed]:border-blue data-[pressed]:shadow-[0_0_0_1px_var(--color-blue)]"
+                    className="h-auto min-h-28 md:min-h-32 p-6 md:p-7 border border-bba-border bg-surface transition-all hover:border-bba-border-strong data-[pressed]:bg-bg data-[pressed]:border-blue data-[pressed]:shadow-[0_0_0_1px_var(--color-blue)]"
                   >
-                    <span className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-text">
-                      {opt.label}
+                    <span className="flex flex-col items-start justify-center gap-2 w-full text-left">
+                      <span className="font-display text-3xl md:text-4xl font-bold uppercase tracking-tight text-text leading-none">
+                        {opt.label}
+                      </span>
+                      <span className="text-kicker">{opt.sub}</span>
                     </span>
-                    <span className="text-kicker">{opt.sub}</span>
                   </ToggleGroupItem>
                 ))}
               </ToggleGroup>
@@ -333,10 +335,14 @@ export function IntakeForm({ onSubmit, disabled }: IntakeFormProps) {
                       <ToggleGroupItem
                         key={n}
                         value={String(n)}
-                        className="flex flex-col items-center gap-1 py-4 md:py-5 border border-bba-border bg-surface text-text transition-all hover:border-bba-border-strong data-[pressed]:bg-bg data-[pressed]:border-blue data-[pressed]:shadow-[0_0_0_1px_var(--color-blue)]"
+                        className="h-auto min-h-24 md:min-h-28 py-4 md:py-5 px-2 border border-bba-border bg-surface text-text transition-all hover:border-bba-border-strong data-[pressed]:bg-bg data-[pressed]:border-blue data-[pressed]:shadow-[0_0_0_1px_var(--color-blue)]"
                       >
-                        <span className="font-display text-3xl md:text-4xl font-bold">{n}</span>
-                        <span className="text-kicker">{n === 3 ? 'three squares' : n === 4 ? 'three plus snack' : 'plus two snacks'}</span>
+                        <span className="flex flex-col items-center justify-center gap-2 w-full">
+                          <span className="font-display text-3xl md:text-4xl font-bold leading-none">{n}</span>
+                          <span className="text-kicker text-center whitespace-nowrap">
+                            {n === 3 ? 'three squares' : n === 4 ? 'three plus snack' : 'plus two snacks'}
+                          </span>
+                        </span>
                       </ToggleGroupItem>
                     ))}
                   </ToggleGroup>
