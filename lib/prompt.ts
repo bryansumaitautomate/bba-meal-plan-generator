@@ -56,8 +56,10 @@ CONSTRAINTS:
   Use only Lunch, Dinner, Snack (and Snack 2 for 5 meals). Total meal count stays the same.
 - Daily totals must hit calorie target within 5% and protein target within 5g.
 - Honor allergies absolutely.
-- Honor dietStyle. Diet styles we support: omnivore, vegetarian, vegan.
-  We DO NOT do keto, paleo, or any other fad diet. Do not suggest them.
+- All plans are OMNIVORE — balanced real food including meat, fish, eggs, dairy,
+  grains and vegetables. BBA does NOT do keto, paleo, vegetarian, vegan, or any
+  other restrictive diet. Do not suggest them. Do not use words like "plant-based",
+  "vegan", "vegetarian" anywhere in meal names or ingredients.
 - Vary meals across the week. No repeating any meal name.
 - On training days, slightly higher carbs around the workout slot.
 - Macros (protein, carbs, fat) sum sensibly to calories (4/4/9 cal per gram).

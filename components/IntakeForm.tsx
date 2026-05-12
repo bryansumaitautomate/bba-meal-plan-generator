@@ -29,7 +29,7 @@ interface CalcState {
 }
 
 const cuisineOptions = ['Italian', 'Asian', 'Mediterranean', 'Mexican', 'American'] as const
-const dietOptions = ['omnivore', 'vegetarian', 'vegan'] as const
+const dietOptions = ['omnivore'] as const
 const goalOptions = [
   { value: 'cut', label: 'Cut', sub: 'Strip fat' },
   { value: 'maintain', label: 'Maintain', sub: 'Hold the line' },

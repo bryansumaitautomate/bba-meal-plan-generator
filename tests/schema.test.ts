@@ -24,7 +24,7 @@ describe('Intake schema (non-member)', () => {
       calories: 2200,
       protein: 150,
       trainingDays: 3,
-      dietStyle: 'vegetarian',
+      dietStyle: 'omnivore',
     })
     expect(result.allergies).toBe('')
     expect(result.dislikes).toBe('')

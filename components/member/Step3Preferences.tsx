@@ -19,7 +19,7 @@ interface Step3PreferencesProps {
   onBack: () => void
 }
 
-const DIET_OPTIONS: DietStyle[] = ['omnivore', 'vegetarian', 'vegan']
+const DIET_OPTIONS: DietStyle[] = ['omnivore']
 const CUISINE_OPTIONS: Cuisine[] = ['Italian', 'Asian', 'Mediterranean', 'Mexican', 'American']
 const MEAL_OPTIONS = [3, 4, 5] as const
 

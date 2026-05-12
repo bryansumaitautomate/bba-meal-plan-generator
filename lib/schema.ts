@@ -4,7 +4,10 @@ import { z } from 'zod'
 // Shared option enums (kept aligned with form UI)
 // ────────────────────────────────────────────────────────────
 
-export const DietStyle = z.enum(['omnivore', 'vegetarian', 'vegan'])
+// BBA only does balanced omnivore eating. No fad / restrictive diets.
+// Keeping this as a literal-only enum so any non-omnivore POST is rejected
+// at the schema boundary.
+export const DietStyle = z.enum(['omnivore'])
 export const Cuisine = z.enum(['Italian', 'Asian', 'Mediterranean', 'Mexican', 'American'])
 export const Goal = z.enum(['cut', 'maintain', 'gain'])
 export const ActivityLevel = z.enum(['sedentary', 'light', 'moderate', 'active', 'very_active'])
